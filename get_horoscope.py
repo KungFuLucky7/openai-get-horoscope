@@ -43,7 +43,6 @@ print("Initial response JSON for the prompt with tools defined:")
 print(response.to_json())
 
 # Save function call outputs for subsequent requests
-
 input_list += response.output
 
 for item in response.output:
