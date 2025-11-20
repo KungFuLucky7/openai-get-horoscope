@@ -7,7 +7,7 @@ client = OpenAI()
 tools = [
     {
         "type": "function",
-        "name":  "get_horoscope",
+        "name": "get_horoscope",
         "description": "Get today's horoscope for an astrological sign.",
         "parameters": {
             "type": "object",
@@ -34,11 +34,7 @@ def get_horoscope(sign: str) -> str:
 input_list = [{"role": "user", "content": "What is my horoscope? I am a Sagittarius."}]
 
 # 2. Prompt the model with tools defined
-response = client.responses.create(
-    model="gpt-5",
-    tools=tools,
-    input=input_list,
-)
+response = client.responses.create(model="gpt-5", tools=tools, input=input_list)
 print("Initial response JSON for the prompt with tools defined:")
 print(response.to_json())
 
