@@ -39,8 +39,11 @@ response = client.responses.create(
     tools=tools,
     input=input_list,
 )
+print("Initial response JSON for the prompt with tools defined:")
+print(response.to_json())
 
 # Save function call outputs for subsequent requests
+
 input_list += response.output
 
 for item in response.output:
@@ -58,7 +61,7 @@ for item in response.output:
                 }
             )
 
-print("Final input debug log:")
+print("\nFinal input debug log:")
 print(input_list)
 
 response = client.responses.create(
@@ -70,7 +73,7 @@ response = client.responses.create(
 
 # 5. The model should be able to give a response!
 print("\nFinal output debug log:")
-print(response.model_dump_json(indent=2))
+print(response.to_json())
 print(response.output_text)
 
 print("\nFinal input:")
